@@ -1,0 +1,185 @@
+/* src/Style/Header.css */
+.header {
+  background-color: #00b894;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px; /* Explicit height */
+  z-index: 1000;
+  padding: 0 30px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Brand container */
+.brand-container {
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.brand {
+  font-size: 24px;
+  font-weight: 900;
+  color: #000000;
+  text-decoration: none;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Navigation container */
+.nav-container {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.main-nav {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-link {
+  color: #000000;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+/* Auth buttons container */
+.auth-container {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 50px;
+}
+
+.auth-buttons {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  padding: 50px;
+}
+
+.nav-button {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: 2px solid #000000;
+  background: transparent;
+}
+
+.logout-btn {
+  color: #000000;
+  background: none;
+  border: 2px solid #000000;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 10px 25px;
+  border-radius: 5px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .main-nav {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .auth-container {
+    flex-direction: column;
+    width: 100%;
+    padding: 20px;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    width: 100%;
+    text-align: center;
+  }
+
+  .nav-button {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
+
+/* Add margin to main content to account for fixed header */
+.main-content {
+  margin-top: 80px;
+  padding: 20px;
+}
+
+/* Add these styles to your existing Header.css */
+
+/* Update existing styles */
+.header {
+  background: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 1000;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+/* Add responsive styles */
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem;
+  }
+  
+  .brand {
+    font-size: 1.25rem;
+  }
+  
+  .logout-btn {
+    padding: 0.5rem 1rem;
+  }
+}

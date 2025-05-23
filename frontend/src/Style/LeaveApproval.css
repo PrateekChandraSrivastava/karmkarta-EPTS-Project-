@@ -1,0 +1,351 @@
+.leave-approval-container {
+    padding: 0;
+    width: 100%;
+    background-color: #f5f6fa;
+    height: 100%;
+}
+
+.page-header {
+    margin-bottom: 2rem;
+    text-align: left;
+}
+
+.page-header h1 {
+    color: #002B3D;
+    font-size: 2rem;
+    margin: 0;
+}
+
+.page-header p {
+    color: #6c757d;
+    margin: 0;
+    font-size: 1rem;
+}
+
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+}
+
+.search-input {
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 300px;
+    font-size: 14px;
+    margin-right: auto;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: #00A884;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.filter-button {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6c5ce7;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.filter-button:hover {
+    background-color: #008f6f;
+}
+
+.leave-table {
+    width: 100%;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+th {
+    background-color: #f8f9fa;
+    padding: 12px;
+    text-align: left;
+    font-weight: 600;
+    color: #495057;
+    border-bottom: 2px solid #dee2e6;
+}
+
+td {
+    padding: 12px;
+    border-bottom: 1px solid #dee2e6;
+    color: #495057;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+.status-text {
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.status-text.pending {
+    background-color: #ffeaa7;
+    color: #fdcb6e;
+}
+
+.status-text.approved {
+    background-color: #55efc4;
+    color: #00b894;
+}
+
+.status-text.rejected {
+    background-color: #ff7675;
+    color: #d63031;
+}
+
+.view-button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    background-color: #6c5ce7;
+    color: white;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+}
+
+.view-button:hover {
+    background-color: #008f6f;
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-input {
+        width: 100%;
+    }
+
+    .filter-buttons {
+        flex-wrap: wrap;
+    }
+
+    .filter-button {
+        flex: 1;
+        min-width: 100px;
+    }
+}
+
+/* Message Styles */
+.error-message,
+.success-message {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.error-message {
+    background-color: #fde8e8;
+    color: #c81e1e;
+    border: 1px solid #fecaca;
+}
+
+.success-message {
+    background-color: #e6f4ea;
+    color: #1e7e34;
+    border: 1px solid #c3e6cb;
+}
+
+.no-requests {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+    background: white;
+    border-radius: 10px;
+    grid-column: 1 / -1;
+}
+
+.loading {
+    text-align: center;
+    padding: 2rem;
+    color: #666;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.leave-request-card {
+    animation: fadeIn 0.3s ease-out;
+}
+
+.error-message,
+.success-message {
+    animation: fadeIn 0.3s ease-out;
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: slideIn 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #002B3D;
+    font-size: 1.5rem;
+}
+
+.close-button {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.close-button:hover {
+    color: #333;
+}
+
+.modal-body {
+    padding: 1.5rem;
+}
+
+.detail-group {
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 6px;
+}
+
+.detail-group h3 {
+    color: #002B3D;
+    margin: 0 0 1rem 0;
+    font-size: 1.2rem;
+}
+
+.detail-group p {
+    margin: 0.5rem 0;
+    color: #495057;
+}
+
+.detail-group strong {
+    color: #002B3D;
+    margin-right: 0.5rem;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: flex-end;
+}
+
+.approve-button,
+.reject-button {
+    padding: 0.5rem 1.5rem;
+    border: none;
+    border-radius: 4px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.approve-button {
+    background-color: #00A884;
+    color: white;
+}
+
+.approve-button:hover {
+    background-color: #008f6f;
+}
+
+.reject-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.reject-button:hover {
+    background-color: #c82333;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        width: 95%;
+        margin: 1rem;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .approve-button,
+    .reject-button {
+        width: 100%;
+    }
+} 

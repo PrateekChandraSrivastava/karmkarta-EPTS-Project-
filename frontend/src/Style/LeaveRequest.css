@@ -1,0 +1,334 @@
+.leave-request-page {
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f6fa;
+  overflow-x: hidden;
+}
+
+.leave-request-container {
+  width: calc(100% - 40px);
+  margin: 20px;
+  box-sizing: border-box;
+}
+
+.leave-request-container h2 {
+  color: #002B3D;
+  font-size: 28px;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid #002B3D;
+  padding-bottom: 0.5rem;
+}
+
+/* Stats Section */
+.leave-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.stat-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  transition: transform 0.3s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-4px);
+}
+
+.stat-card.approved {
+  border-left: 4px solid #10B981;
+}
+
+.stat-card.pending {
+  border-left: 4px solid #F59E0B;
+}
+
+.stat-card.rejected {
+  border-left: 4px solid #EF4444;
+}
+
+.stat-icon {
+  font-size: 2rem;
+  padding: 1rem;
+  border-radius: 12px;
+  background: #f8fafc;
+}
+
+.approved .stat-icon {
+  color: #10B981;
+}
+
+.pending .stat-icon {
+  color: #F59E0B;
+}
+
+.rejected .stat-icon {
+  color: #EF4444;
+}
+
+.stat-info h3 {
+  color: #64748B;
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+}
+
+.stat-info p {
+  color: #1E293B;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Form Section */
+.leave-form {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  min-height: calc(100vh - 40px);
+  box-sizing: border-box;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-weight: 500;
+}
+
+.form-group select,
+.form-group input[type="date"],
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #002B3D;
+  box-shadow: 0 0 0 2px rgba(0, 43, 61, 0.1);
+}
+
+.duration-display {
+  background: #F8FAFC;
+  color: #64748B;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Leave History Section */
+.leave-history-section {
+  background: white;
+  border-radius: 24px;
+  padding: 2rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.leave-history-section h2 {
+  color: #1E293B;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.leave-history {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.leave-card {
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.leave-card.approved {
+  border-left: 4px solid #10B981;
+}
+
+.leave-card.pending {
+  border-left: 4px solid #F59E0B;
+}
+
+.leave-card.rejected {
+  border-left: 4px solid #EF4444;
+}
+
+.leave-card-header {
+  padding: 1rem;
+  background: #F8FAFC;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.leave-type {
+  font-weight: 600;
+  color: #1E293B;
+}
+
+.leave-status {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.leave-status.approved {
+  background: #D1FAE5;
+  color: #059669;
+}
+
+.leave-status.pending {
+  background: #FEF3C7;
+  color: #D97706;
+}
+
+.leave-status.rejected {
+  background: #FEE2E2;
+  color: #DC2626;
+}
+
+.leave-card-body {
+  padding: 1rem;
+}
+
+.leave-dates,
+.leave-duration {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #64748B;
+  margin-bottom: 0.5rem;
+}
+
+.leave-reason {
+  color: #1E293B;
+  margin-top: 1rem;
+}
+
+.leave-card-footer {
+  padding: 1rem;
+  background: #F8FAFC;
+  border-top: 1px solid #E2E8F0;
+}
+
+.applied-date {
+  color: #64748B;
+  font-size: 0.75rem;
+}
+
+/* Success Message */
+.success-message {
+  background-color: #e6f4ea;
+  color: #1e7e34;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #6c5ce7;
+  color: white;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  width: 100%;
+}
+
+.submit-button:hover {
+  background-color: #5849e4;
+}
+
+.submit-button:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+/* Message Styles */
+.error-message,
+.success-message {
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+  font-weight: 500;
+}
+
+.error-message {
+  background-color: #fde8e8;
+  color: #c81e1e;
+  border: 1px solid #fecaca;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+  .leave-form {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .form-group:nth-child(3),
+  .form-group:last-child {
+    grid-column: span 2;
+  }
+
+  .submit-button {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  .leave-request-container {
+    margin: 1rem;
+    padding: 0 1rem;
+  }
+
+  .leave-form {
+    padding: 1.5rem;
+  }
+
+  .form-group {
+    margin-bottom: 1rem;
+  }
+} 

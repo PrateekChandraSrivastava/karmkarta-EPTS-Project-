@@ -1,0 +1,46 @@
+.admin-layout {
+  display: flex;
+  min-height: 100vh;
+  transition: margin-left 0.3s ease;
+}
+
+.admin-content {
+  flex-grow: 1;
+  padding: 20px;
+  transition: margin-left 0.3s ease;
+  margin-left: 250px;
+  /* Default margin when sidebar is open */
+  background-color: #f3f4f6;
+  min-height: 100vh;
+}
+
+/* Styles when sidebar is open */
+.admin-layout.sidebar-open .admin-content {
+  margin-left: 250px;
+  /* Width of the open sidebar */
+}
+
+/* Styles when sidebar is closed */
+.admin-layout.sidebar-closed .admin-sidebar {
+  transform: translateX(-100%);
+}
+
+.admin-layout.sidebar-closed .admin-content {
+  margin-left: 0;
+}
+
+@media (max-width: 768px) {
+  .admin-layout {
+    display: block;
+    /* Or keep flex if preferred */
+  }
+
+  .admin-content {
+    margin-left: 0;
+    /* Adjust based on closed state */
+    padding-top: 1rem;
+  }
+
+  /* REMOVED: Rule hiding the toggle button */
+  /* .admin-sidebar .sidebar-toggle-btn { display: none; } */
+}

@@ -1,0 +1,248 @@
+.checkin-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  width: 80%;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+.checkin-container::before,
+.checkin-container::after {
+  content: '';
+  position: fixed;
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(99,102,241,0.1) 0%, rgba(99,102,241,0) 70%);
+  z-index: -1;
+}
+
+.checkin-container::before {
+  top: -100px;
+  left: -100px;
+}
+
+.checkin-container::after {
+  bottom: -100px;
+  right: -100px;
+}
+
+.status-card,
+.records-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.status-card:hover,
+.records-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.status-card h2,
+.records-card h2 {
+  color: #1a202c;
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.current-time {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2d3748;
+  text-align: center;
+  margin: 1rem 0;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+  width: 100%;
+}
+
+.status-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border-radius: 12px;
+  font-weight: 500;
+  margin: 1.5rem 0;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 300px;
+}
+
+.status-indicator.checked-in {
+  background: rgba(72, 187, 120, 0.1);
+  color: #2f855a;
+}
+
+.status-indicator.checked-out {
+  background: rgba(245, 101, 101, 0.1);
+  color: #c53030;
+}
+
+.last-action {
+  text-align: center;
+  color: #4a5568;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+  width: 100%;
+}
+
+.action-button {
+  width: 100%;
+  max-width: 300px;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin: 0 auto;
+}
+
+.action-button.check-in {
+  background: linear-gradient(135deg, #4c51bf, #6366f1);
+  color: white;
+}
+
+.action-button.check-out {
+  background: linear-gradient(135deg, #e53e3e, #f56565);
+  color: white;
+}
+
+.action-button:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.action-button:active {
+  transform: scale(0.98);
+}
+
+.records-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.records-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.records-list::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 3px;
+}
+
+.records-list::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 3px;
+}
+
+.record-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  border-radius: 10px;
+  margin-bottom: 0.75rem;
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+}
+
+.record-item:hover {
+  transform: translateX(5px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.record-action {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+}
+
+.record-icon.in {
+  color: #48bb78;
+}
+
+.record-icon.out {
+  color: #f56565;
+}
+
+.record-time {
+  color: #718096;
+  display: flex;
+  align-items: center;
+}
+
+.no-records {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 3rem 0;
+  color: #a0aec0;
+}
+
+@media (max-width: 768px) {
+  .checkin-container {
+    padding: 1rem;
+    width: 90%;
+  }
+
+  .status-card,
+  .records-card {
+    padding: 1.5rem;
+  }
+
+  .current-time {
+    font-size: 2rem;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.status-indicator.checked-in svg {
+  animation: pulse 2s infinite;
+  color: #48bb78;
+}
+
+.status-indicator.checked-out svg {
+  color: #f56565;
+} 

@@ -1,0 +1,209 @@
+/* Main Container */
+.feedback-container {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 0 1.5rem;
+}
+
+.feedback-container h2 {
+    color: #002B3D;
+    font-size: 28px;
+    margin-bottom: 1.5rem;
+    padding-bottom: 0.5rem;
+}
+
+/* Form Styles */
+.feedback-form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    margin-bottom: 3rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+}
+
+.form-group select,
+.form-group input[type="number"],
+.form-group input[type="date"] {
+    width: 85%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group textarea {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    min-height: 120px;
+    resize: vertical;
+    font-size: 1rem;
+    font-family: inherit;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #002B3D;
+    box-shadow: 0 0 0 2px rgba(0, 43, 61, 0.1);
+}
+
+/* Submit Button */
+.submit-button {
+    background-color: #002B3D;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.submit-button:hover {
+    background-color: #004466;
+}
+
+.submit-button:disabled {
+    background-color: #cccccc;
+    cursor: not-allowed;
+}
+
+/* Feedback List Container */
+.feedback-list-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+}
+
+.feedback-list-container h3 {
+    color: #002B3D;
+    font-size: 24px;
+    margin-bottom: 1.5rem;
+}
+
+/* Table Styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    background: white;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #002B3D;
+    font-weight: 600;
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 2px solid #002B3D;
+}
+
+td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    color: #333;
+}
+
+tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* Message Styles */
+.error-message,
+.success-message {
+    padding: 1rem;
+    border-radius: 5px;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+}
+
+.error-message {
+    background-color: #fde8e8;
+    color: #c81e1e;
+    border: 1px solid #fecaca;
+}
+
+.success-message {
+    background-color: #e6f4ea;
+    color: #1e7e34;
+    border: 1px solid #c3e6cb;
+}
+
+/* Rating Input Specific Styles */
+input[type="number"] {
+    width: 100px !important;
+}
+
+/* Responsive Design */
+@media (min-width: 768px) {
+    .feedback-form {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 2rem;
+    }
+
+    .form-group:nth-child(3),
+    .form-group:last-child {
+        grid-column: span 2;
+    }
+}
+
+@media (max-width: 768px) {
+    .feedback-container {
+        margin: 1rem;
+        padding: 0 1rem;
+    }
+
+    .feedback-form,
+    .feedback-list-container {
+        padding: 1.5rem;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    th, td {
+        padding: 0.75rem;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Animation for Success/Error Messages */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.error-message,
+.success-message {
+    animation: fadeIn 0.3s ease-out;
+} 

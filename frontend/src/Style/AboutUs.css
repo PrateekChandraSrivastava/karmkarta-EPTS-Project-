@@ -1,0 +1,181 @@
+/* About Us Page Styles */
+.about-us-container {
+  max-width: 1200px;
+  margin: 3rem auto;
+  padding: 40px 20px;
+  color: #2c3e50;
+}
+
+.about-us-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.about-us-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  background: linear-gradient(45deg, #2c3e50, #3498db);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.about-us-subtitle {
+  font-size: 1.2rem;
+  color: #7f8c8d;
+  max-width: 800px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.about-section {
+  margin-bottom: 50px;
+  padding: 30px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.about-section:hover {
+  transform: translateY(-5px);
+}
+
+.section-title {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title i {
+  color: #3498db;
+}
+
+.section-content {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #34495e;
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  margin: 40px 0;
+}
+
+.feature-card {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+}
+
+.feature-title {
+  font-size: 1.4rem;
+  color: #2c3e50;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.feature-list li {
+  margin-bottom: 15px;
+  padding-left: 25px;
+  position: relative;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.feature-list li:before {
+  content: "✓";
+  color: #3498db;
+  position: absolute;
+  left: 0;
+  font-weight: bold;
+}
+
+.mission-section {
+  background: linear-gradient(135deg, #3498db, #2c3e50);
+  color: #ffffff;
+  padding: 40px;
+  border-radius: 10px;
+  margin-top: 50px;
+}
+
+.mission-title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.mission-content {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .about-us-container {
+    padding: 20px;
+  }
+
+  .about-us-title {
+    font-size: 2rem;
+  }
+
+  .about-us-subtitle {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-content {
+    font-size: 1rem;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .feature-title {
+    font-size: 1.2rem;
+  }
+
+  .feature-list li {
+    font-size: 1rem;
+  }
+
+  .mission-section {
+    padding: 30px 20px;
+  }
+
+  .mission-title {
+    font-size: 1.8rem;
+  }
+
+  .mission-content {
+    font-size: 1.1rem;
+  }
+} 

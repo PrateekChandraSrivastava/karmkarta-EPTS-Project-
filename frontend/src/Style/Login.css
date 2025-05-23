@@ -1,0 +1,100 @@
+/* Header styling */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    /* width: 100%; */
+    background: #007bff;
+    color: #fff;
+    z-index: 1000;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  
+  /* Main content styling */
+  .main-content {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f8f9fa;
+  }
+  
+  /* Container styling for the login form */
+  .login-container {
+    width: 90%;
+    max-width: 400px;
+    margin: 10% auto; /* Centers the container and pushes it down a bit */
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.5s ease-in;
+  }
+  
+  /* Form styling using flexbox for dynamic centering */
+  form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Heading styling */
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 3em;
+  }
+  
+  /* Error message styling */
+  .error {
+    color: #ff4d4d;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Input field styling */
+  input {
+    width: 100%;
+    max-width: 350px;
+    padding: 12px 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    transition: border-color 0.3s;
+  }
+  
+  /* Input focus styling */
+  input:focus {
+    border-color: #6c63ff;
+    outline: none;
+  }
+  
+  /* Button styling */
+  button {
+    width: 100%;
+    max-width: 350px;
+    padding: 12px;
+    margin: 10px 0;
+    background: linear-gradient(45deg, #6c63ff, #3f3fbb);
+    color: #fff;
+    border: none;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  /* Button hover styling */
+  button:hover {
+    background: linear-gradient(45deg, #3f3fbb, #6c63ff);
+  }
+
+ 
+
+  

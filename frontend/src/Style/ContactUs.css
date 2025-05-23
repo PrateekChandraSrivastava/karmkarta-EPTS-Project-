@@ -1,0 +1,143 @@
+.contact-container {
+  max-width: 800px;
+  margin: 8rem auto;
+  padding: 1rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.intro {
+  text-align: center;
+  color: #555;
+  margin-bottom: 2rem;
+}
+
+.contact-details {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.contact-card {
+  flex: 1 1 45%;
+  background: #f1f1f1;
+  margin: 0.5rem;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.contact-card h3 {
+  margin-top: 0;
+  color: #333;
+}
+
+.contact-card p {
+  margin: 0.5rem 0;
+  color: #555;
+}
+
+.contact-card a {
+  color: #007BFF;
+  text-decoration: none;
+}
+
+.contact-card a:hover {
+  text-decoration: underline;
+}
+
+.contact-card address {
+  font-style: normal;
+  color: #555;
+  line-height: 1.5;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2rem;
+}
+
+.contact-form label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #007BFF;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.submit-btn {
+  padding: 0.75rem;
+  font-size: 1rem;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.submit-btn:hover {
+  background-color: #0056b3;
+}
+
+.social-links {
+  text-align: center;
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid #eee;
+}
+
+.social-links p {
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.social-links a {
+  margin: 0 0.5rem;
+  text-decoration: none;
+  color: #007BFF;
+}
+
+.social-links a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .contact-details {
+    flex-direction: column;
+  }
+  
+  .contact-card {
+    flex: 1 1 100%;
+  }
+  
+  .contact-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+} 
