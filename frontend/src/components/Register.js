@@ -12,6 +12,7 @@ const Register = () => {
         password: '',
         confirmPassword: '',
         role: '',
+        name: '', // Added name field
         email: '',
         department: '',
         position: '',
@@ -48,14 +49,16 @@ const Register = () => {
             const payload = {
                 username: formData.username,
                 password: formData.password,
-                role: formData.role
+                role: formData.role,
+                name: formData.name, // Added name to payload
+                email: formData.email // Ensure email is part of the main payload for all roles if required by backend for User model
             };
 
             // If role is employee, include extra fields
             if (formData.role === 'employee') {
-                payload.email = formData.email;
+                // email is already in payload, ensure other employee-specific fields are added
                 payload.department = formData.department;
-                payload.position = formData.position;
+                payload.designation = formData.position; // Changed from position to designation
                 payload.manager_id = formData.managerId;
             }
 
@@ -82,6 +85,32 @@ const Register = () => {
                             value={formData.username}
                             onChange={handleChange}
                             placeholder="Enter your username"
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="name">Full Name</label> {/* Added Full Name input field */}
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            placeholder="Enter your full name"
+                            required
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            placeholder="Enter your email"
                             required
                         />
                     </div>
@@ -130,7 +159,8 @@ const Register = () => {
 
                     {formData.role === 'employee' && (
                         <div className="employee-fields">
-                            <div className="form-group">
+                            {/* Email is now a common field, remove from here if you prefer it only for employees */}
+                            {/* <div className="form-group">
                                 <label htmlFor="email">Email</label>
                                 <input
                                     type="email"
@@ -141,7 +171,7 @@ const Register = () => {
                                     placeholder="Enter your email"
                                     required
                                 />
-                            </div>
+                            </div> */}
 
                             <div className="form-group">
                                 <label htmlFor="department">Department</label>
