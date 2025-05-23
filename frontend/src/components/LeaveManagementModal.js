@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 // import axios from 'axios'; // Commented out as handleSubmit is also commented out
 import '../Style/EmployeeModals.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const LeaveManagementModal = ({ employee, onClose }) => {
   const [leaveBalance, /* setLeaveBalance */] = useState({
     annual: 20,
@@ -33,7 +35,7 @@ const LeaveManagementModal = ({ employee, onClose }) => {
   useEffect(() => {
     const fetchKPIData = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/performance-metrics?employee_id=${employee.id}`, {
+        const response = await fetch(`${API_BASE_URL}/performance-metrics?employee_id=${employee.id}`, {
           headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
         });
         if (!response.ok) throw new Error('Failed to fetch KPI data');
@@ -57,7 +59,7 @@ const LeaveManagementModal = ({ employee, onClose }) => {
 
     try {
       const response = await axios.post(
-        'http://localhost:5000/adjust-leave',
+        `${API_BASE_URL}/adjust-leave`,
         {
           employee_id: employee.id,
           adjustment: parseInt(adjustment),

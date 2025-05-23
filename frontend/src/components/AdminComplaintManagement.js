@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import '../Style/AdminComplaintManagement.css';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const AdminComplaintManagement = () => {
   const [complaints, setComplaints] = useState([]);
@@ -19,7 +19,7 @@ const AdminComplaintManagement = () => {
       setError('');
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get(`${API_BASE}/complaints/all`, {
+        const res = await axios.get(`${API_BASE_URL}/complaints`, {
           headers: { Authorization: `Bearer ${token}` }
         });
         if (isMounted) setComplaints(res.data);
@@ -36,7 +36,7 @@ const AdminComplaintManagement = () => {
   const handleStatusUpdate = async (complaintId, newStatus) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.patch(`${API_BASE}/complaints/${complaintId}/status`, { status: newStatus }, {
+      await axios.put(`${API_BASE_URL}/complaints/${complaintId}`, { status: newStatus }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setComplaints(complaints.map(complaint =>
@@ -57,7 +57,7 @@ const AdminComplaintManagement = () => {
     if (!selectedComplaint || !response.trim()) return;
     try {
       const token = localStorage.getItem('token');
-      await axios.patch(`${API_BASE}/complaints/${selectedComplaint.id}/response`, { response }, {
+      await axios.patch(`${API_BASE_URL}/complaints/${selectedComplaint.id}/response`, { response }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setComplaints(complaints.map(complaint =>
@@ -129,7 +129,7 @@ const AdminComplaintManagement = () => {
                   <div><strong>Date:</strong> {selectedComplaint.date}</div>
                 </div>
                 {selectedComplaint.attachment && (
-                  <div><strong>Attachment:</strong> <a href={`${API_BASE}/uploads/${selectedComplaint.attachment}`} target="_blank" rel="noopener noreferrer">View</a></div>
+                  <div><strong>Attachment:</strong> <a href={`${API_BASE_URL}/uploads/${selectedComplaint.attachment}`} target="_blank" rel="noopener noreferrer">View</a></div>
                 )}
                 <div className="response-section">
                   <h4>Admin Response</h4>

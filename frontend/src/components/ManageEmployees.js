@@ -28,6 +28,8 @@ const getAuthDetailsFromToken = (token) => {
   }
 };
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const ManageEmployees = () => {
   const [employees, setEmployees] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
@@ -45,7 +47,7 @@ const ManageEmployees = () => {
     setLoading(true);
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.get('http://localhost:5000/employees', {
+      const response = await axios.get(`${API_BASE_URL}/employees`, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -99,7 +101,7 @@ const ManageEmployees = () => {
         return;
       }
 
-      await axios.post('http://localhost:5000/employees', newEmployee, {
+      await axios.post(`${API_BASE_URL}/employees`, newEmployee, {
         headers: { Authorization: `Bearer ${token}` },
       });
       setShowAddModal(false);
@@ -113,7 +115,7 @@ const ManageEmployees = () => {
   const handleEditEmployee = async (updatedEmployee) => {
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.put(`http://localhost:5000/employees/${updatedEmployee.id}`, updatedEmployee, {
+      const response = await axios.put(`${API_BASE_URL}/employees/${updatedEmployee.id}`, updatedEmployee, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -141,7 +143,7 @@ const ManageEmployees = () => {
       try {
         const token = localStorage.getItem('token');
         // Backend /employees DELETE endpoint is role-aware.
-        await axios.delete(`http://localhost:5000/employees/${employeeId}`, {
+        await axios.delete(`${API_BASE_URL}/employees/${employeeId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         fetchEmployees();

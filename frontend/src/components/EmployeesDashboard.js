@@ -3,6 +3,8 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 import '../Style/EmployeesDashboard.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const EmployeesDashboard = () => {
   const [employeeData, setEmployeeData] = useState(null);
   const [error, setError] = useState('');
@@ -23,7 +25,7 @@ const EmployeesDashboard = () => {
         return;
       }
       try {
-        const res = await axios.get(`http://localhost:5000/employees/${employeeId}`, {
+        const res = await axios.get(`${API_BASE_URL}/employees/${employeeId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setEmployeeData(res.data);

@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import '../Style/WorkFromHomeForm.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 export default function WorkFromHomeForm() {
   const [formData, setFormData] = useState({
     startDate: '',
@@ -19,9 +21,21 @@ export default function WorkFromHomeForm() {
     fetchWfhHistory();
   }, []);
 
-  const fetchWfhHistory = () => {
+  const fetchWfhHistory = async () => {
     // TODO: Replace with actual API call
     // For now, using mock data
+    // Example of how it might look with an API call:
+    /*
+    try {
+      const token = localStorage.getItem('token');
+      const response = await axios.get(`${API_BASE_URL}/wfh-requests`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      setWfhHistory(response.data);
+    } catch (error) {
+      console.error('Error fetching WFH history:', error);
+    }
+    */
     const mockHistory = [
       { id: 1, startDate: '2024-03-20', endDate: '2024-03-22', status: 'Approved' },
       { id: 2, startDate: '2024-03-25', endDate: '2024-03-26', status: 'Pending' }
@@ -39,16 +53,16 @@ export default function WorkFromHomeForm() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    
+
     // TODO: Replace with actual API call
+    // Example of how it might look with an API call:
+    /*
     try {
-      // Simulating API call
-      console.log('Submitting WFH request:', formData);
-      
-      // Show success message
+      const token = localStorage.getItem('token');
+      await axios.post(`${API_BASE_URL}/wfh-requests`, formData, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setSuccessMessage('Work from home request submitted successfully!');
-      
-      // Clear form
       setFormData({
         startDate: '',
         endDate: '',
@@ -56,15 +70,32 @@ export default function WorkFromHomeForm() {
         workSchedule: '',
         plannedTasks: ''
       });
-
-      // Refresh history
       fetchWfhHistory();
-
-      // Clear success message after 3 seconds
       setTimeout(() => setSuccessMessage(''), 3000);
     } catch (error) {
       console.error('Error submitting WFH request:', error);
     }
+    */
+    // Simulating API call
+    console.log('Submitting WFH request:', formData);
+
+    // Show success message
+    setSuccessMessage('Work from home request submitted successfully!');
+
+    // Clear form
+    setFormData({
+      startDate: '',
+      endDate: '',
+      reason: '',
+      workSchedule: '',
+      plannedTasks: ''
+    });
+
+    // Refresh history
+    fetchWfhHistory();
+
+    // Clear success message after 3 seconds
+    setTimeout(() => setSuccessMessage(''), 3000);
   };
 
   return (

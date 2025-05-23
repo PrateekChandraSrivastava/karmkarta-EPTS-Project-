@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Style/TaskManagement.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const TaskManagement = () => {
     const [tasks, setTasks] = useState([]);
     const [showAssignModal, setShowAssignModal] = useState(false);
@@ -33,7 +35,7 @@ const TaskManagement = () => {
     const fetchTasks = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:5000/tasks', {
+            const response = await axios.get(`${API_BASE_URL}/tasks`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setTasks(response.data);
@@ -46,7 +48,7 @@ const TaskManagement = () => {
     const fetchEmployees = async () => {
         try {
             const token = localStorage.getItem('token');
-            const response = await axios.get('http://localhost:5000/employees', {
+            const response = await axios.get(`${API_BASE_URL}/employees`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setEmployees(response.data);
@@ -73,7 +75,7 @@ const TaskManagement = () => {
                 ...newTask,
                 assignedTo: selectedEmp ? selectedEmp.name : ''
             };
-            await axios.post('http://localhost:5000/tasks', payload, {
+            await axios.post(`${API_BASE_URL}/tasks`, payload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setShowAssignModal(false);

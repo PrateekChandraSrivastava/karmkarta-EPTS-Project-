@@ -2,6 +2,8 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import '../Style/EmployeeModals.css'; // Corrected import path
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const AddEmployeeModal = ({ onClose, onAdd, currentUserRole }) => {
   const [formData, setFormData] = useState({
     name: '',
@@ -92,7 +94,7 @@ const AddEmployeeModal = ({ onClose, onAdd, currentUserRole }) => {
         designation: formData.designation, // Sending designation to /register (maps to jobTitle)
       };
 
-      const registerResponse = await axios.post('http://localhost:5000/auth/register', userPayload, {
+      const registerResponse = await axios.post(`${API_BASE_URL}/auth/register`, userPayload, {
         headers: { Authorization: `Bearer ${token}` },
       });
 
@@ -110,7 +112,7 @@ const AddEmployeeModal = ({ onClose, onAdd, currentUserRole }) => {
         // If the current user is a manager, the backend will automatically set the manager_id
         // for the new employee when calling POST /employees.
 
-        await axios.post('http://localhost:5000/employees', employeePayload, {
+        await axios.post(`${API_BASE_URL}/employees`, employeePayload, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

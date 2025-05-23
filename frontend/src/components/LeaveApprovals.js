@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Style/LeaveApproval.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const LeaveApprovals = () => {
     const [searchTerm, setSearchTerm] = useState('');
     const [statusFilter, setStatusFilter] = useState('all');
@@ -15,7 +17,7 @@ const LeaveApprovals = () => {
         const fetchLeaveRequests = async () => {
             try {
                 // Use the correct backend endpoint for fetching leave requests
-                const response = await axios.get('http://localhost:5000/leaves', {
+                const response = await axios.get(`${API_BASE_URL}/leaves`, {
                     headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
                 });
                 setLeaveRequests(response.data);
@@ -47,7 +49,7 @@ const LeaveApprovals = () => {
 
     const handleAction = async (requestId, action) => {
         try {
-            await axios.put(`http://localhost:5000/leaves/${requestId}`, { status: action }, {
+            await axios.put(`${API_BASE_URL}/leaves/${requestId}`, { status: action }, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             });
             setSuccessMessage(`Leave request ${action} successfully`);

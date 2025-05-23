@@ -4,6 +4,8 @@ import axios from 'axios';
 import KPIChart from './KPIChart';
 import '../Style/KPIs.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const KPIs = () => {
     // Form state for KPI input
     const [kpiName, setKpiName] = useState('');
@@ -36,7 +38,7 @@ const KPIs = () => {
     // Fetch the list of employees for the dropdown
     const fetchEmployees = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/employees', {
+            const response = await axios.get(`${API_BASE_URL}/employees`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             });
             setEmployees(response.data);
@@ -48,7 +50,7 @@ const KPIs = () => {
     // Fetch KPI data; if an employee is selected, filter by that employee_id
     const fetchMetrics = useCallback(async () => {
         try {
-            let url = 'http://localhost:5000/performance-metrics';
+            let url = `${API_BASE_URL}/performance-metrics`;
             if (selectedEmployeeId) {
                 url += `?employee_id=${selectedEmployeeId}`;
             }
@@ -94,8 +96,8 @@ const KPIs = () => {
                 value: parseInt(value, 10),
                 date,
             };
-            // const response = await axios.post('http://localhost:5000/performance-metrics', payload, { // This line was causing the unused variable warning, it's correctly removed now if not used.
-            await axios.post('http://localhost:5000/performance-metrics', payload, {
+            // const response = await axios.post('${API_BASE_URL}/performance-metrics', payload, { // This line was causing the unused variable warning, it's correctly removed now if not used.
+            await axios.post(`${API_BASE_URL}/performance-metrics`, payload, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             });
             // Reset form fields

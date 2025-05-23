@@ -3,7 +3,7 @@ import '../Style/CheckInOut.css';
 import { FiClock, FiCheckCircle, FiXCircle, FiLogIn, FiLogOut, FiCalendar } from 'react-icons/fi';
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const CheckInOut = () => {
   const [status, setStatus] = useState('checked-out');
@@ -25,8 +25,8 @@ const CheckInOut = () => {
       try {
         const token = localStorage.getItem('token');
         const [statusRes, recordsRes] = await Promise.all([
-          axios.get(`${API_BASE}/attendance/status`, { headers: { Authorization: `Bearer ${token}` } }),
-          axios.get(`${API_BASE}/attendance/today`, { headers: { Authorization: `Bearer ${token}` } })
+          axios.get(`${API_BASE_URL}/attendance/status`, { headers: { Authorization: `Bearer ${token}` } }),
+          axios.get(`${API_BASE_URL}/attendance/today`, { headers: { Authorization: `Bearer ${token}` } })
         ]);
         if (isMounted) {
           setStatus(statusRes.data.status);
@@ -54,13 +54,13 @@ const CheckInOut = () => {
       // setError(''); // Commented out unused setError
       const token = localStorage.getItem('token');
       const newAction = status === 'checked-out' ? 'checked-in' : 'checked-out';
-      await axios.post(`${API_BASE}/attendance`, { action: newAction }, {
+      await axios.post(`${API_BASE_URL}/attendance`, { action: newAction }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       // Refetch status and records after successful check-in/out
       const [statusRes, recordsRes] = await Promise.all([
-        axios.get(`${API_BASE}/attendance/status`, { headers: { Authorization: `Bearer ${token}` } }),
-        axios.get(`${API_BASE}/attendance/today`, { headers: { Authorization: `Bearer ${token}` } })
+        axios.get(`${API_BASE_URL}/attendance/status`, { headers: { Authorization: `Bearer ${token}` } }),
+        axios.get(`${API_BASE_URL}/attendance/today`, { headers: { Authorization: `Bearer ${token}` } })
       ]);
       setStatus(statusRes.data.status);
       setLastAction(statusRes.data.lastAction);

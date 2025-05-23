@@ -31,14 +31,22 @@ const KPIChart = ({ employeeId }) => {
         ],
     });
 
+    // Base URL for API calls
+    const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
     // Function to fetch KPI data from your backend
     const fetchData = useCallback(async () => {
         try {
-            // Construct URL; if employeeId is provided, add it as a query parameter
-            let url = 'http://localhost:5000/performance-metrics';
+            let url;
+
             if (employeeId) {
-                url += `?employee_id=${employeeId}`;
+                // Fetch data for a specific employee if employeeId is provided
+                url = `${API_BASE_URL}/performance-metrics?employee_id=${employeeId}`;
+            } else {
+                // Fetch aggregated data if no employeeId is provided (e.g., for admin/manager view)
+                url = `${API_BASE_URL}/performance-metrics`;
             }
+
             const response = await axios.get(url, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` },
             });
@@ -63,7 +71,7 @@ const KPIChart = ({ employeeId }) => {
         } catch (error) {
             console.error('Error fetching KPI data for chart:', error);
         }
-    }, [employeeId]);
+    }, [employeeId, API_BASE_URL]);
 
     // Re-fetch data when the component mounts or when employeeId changes
     useEffect(() => {

@@ -4,6 +4,8 @@ import axios from 'axios';
 import { jwtDecode } from 'jwt-decode'; // If your jwt-decode exports named "jwtDecode"
 import '../Style/Feedback.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Feedback = () => {
     // Get the token from localStorage
     const token = localStorage.getItem('token');
@@ -35,7 +37,7 @@ const Feedback = () => {
     useEffect(() => {
         const fetchEmployees = async () => {
             try {
-                const response = await axios.get('http://localhost:5000/employees', {
+                const response = await axios.get(`${API_BASE_URL}/employees`, {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 setEmployees(response.data);
@@ -74,7 +76,7 @@ const Feedback = () => {
     // Fetch feedback entries (moved outside useEffect so it can be called from handleSubmit)
     const fetchFeedbacks = useCallback(async () => {
         try {
-            const response = await axios.get('http://localhost:5000/feedback', {
+            const response = await axios.get(`${API_BASE_URL}/feedback`, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             setFeedbacks(response.data);
@@ -104,7 +106,7 @@ const Feedback = () => {
                 date,
             };
 
-            const response = await axios.post('http://localhost:5000/feedback', payload, {
+            const response = await axios.post(`${API_BASE_URL}/feedback`, payload, {
                 headers: { Authorization: `Bearer ${token}` },
             });
             console.log('Feedback submitted:', response.data);

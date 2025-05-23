@@ -3,12 +3,14 @@ import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import KPIChart from './KPIChart';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const EmployeeKPIs = ({ employeeId }) => {
     const [metrics, setMetrics] = useState([]);
 
     const fetchMetrics = useCallback(async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/performance-metrics?employee_id=${employeeId}`, {
+            const response = await axios.get(`${API_BASE_URL}/performance-metrics?employee_id=${employeeId}`, {
                 headers: { Authorization: `Bearer ${localStorage.getItem('token')}` }
             });
             setMetrics(response.data);

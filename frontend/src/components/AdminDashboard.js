@@ -1,9 +1,9 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { FiCamera } from 'react-icons/fi';
 import '../Style/AdminDashboard.css';
-import axios from 'axios'; // Import axios for API calls
+import axios from 'axios';
 
-const API_BASE = 'http://localhost:5000'; // Define the base URL for your backend
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 const DEFAULT_PLACEHOLDER_IMAGE = 'data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1MCIgaGVpZ2h0PSI1MCIgdmlld0JveD0iMCAwIDUwIDUwIj48Y2lyY2xlIGN4PSIyNSIgY3k9IjI1IiByPSIyMCIgZmlsbD0iI2NjYyIvPjwvc3ZnPg==';
 
 const AdminDashboard = () => {
@@ -48,7 +48,7 @@ const AdminDashboard = () => {
         setEditData({ ...fallbackState, profileImageBase64: null });
         return;
       }
-      const response = await axios.get(`${API_BASE}/auth/me`, {
+      const response = await axios.get(`${API_BASE_URL}/auth/me`, {
         headers: {
           'Authorization': `Bearer ${token}`
         }
@@ -136,7 +136,7 @@ const AdminDashboard = () => {
         }
       };
 
-      const response = await axios.put(`${API_BASE}/auth/me`, payload, config);
+      const response = await axios.put(`${API_BASE_URL}/auth/me`, payload, config);
 
       const updatedProfileData = response.data.user || response.data;
 

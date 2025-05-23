@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import '../Style/LeaveApproval.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const LeaveApproval = () => {
     const [leaveRequests, setLeaveRequests] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -17,7 +19,7 @@ const LeaveApproval = () => {
 
     const fetchLeaveRequests = async () => {
         try {
-            const response = await axios.get(`http://localhost:5000/leave-requests?status=${filter}`, {
+            const response = await axios.get(`${API_BASE_URL}/leave-requests?status=${filter}`, {
                 headers: { Authorization: `Bearer ${token}` }
             });
             setLeaveRequests(response.data);
@@ -30,7 +32,7 @@ const LeaveApproval = () => {
 
     const handleStatusUpdate = async (requestId, newStatus) => {
         try {
-            await axios.patch(`http://localhost:5000/leave-requests/${requestId}`, {
+            await axios.patch(`${API_BASE_URL}/leave-requests/${requestId}`, {
                 status: newStatus
             }, {
                 headers: { Authorization: `Bearer ${token}` }

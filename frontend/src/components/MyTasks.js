@@ -3,6 +3,8 @@ import '../Style/MyTasks.css';
 import axios from 'axios';
 import { jwtDecode } from 'jwt-decode';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const MyTasks = () => {
   const [tasks, setTasks] = useState([]);
   const [filter, setFilter] = useState('all');
@@ -20,7 +22,7 @@ const MyTasks = () => {
       if (!token) return;
       const decoded = jwtDecode(token);
       const employeeId = decoded.id;
-      const response = await axios.get(`http://localhost:5000/tasks?employeeId=${employeeId}`, {
+      const response = await axios.get(`${API_BASE_URL}/tasks?employeeId=${employeeId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setTasks(response.data);
@@ -67,7 +69,7 @@ const MyTasks = () => {
 
       // Persist update to backend
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/tasks/${selectedTask.id}`, updatedTask, {
+      await axios.put(`${API_BASE_URL}/tasks/${selectedTask.id}`, updatedTask, {
         headers: { Authorization: `Bearer ${token}` }
       });
 

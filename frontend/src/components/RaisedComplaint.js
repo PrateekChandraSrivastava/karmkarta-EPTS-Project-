@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import '../Style/RaisedComplaint.css';
 import axios from 'axios';
 
-const API_BASE = 'http://localhost:5000'; // Adjust if backend runs elsewhere
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const RaisedComplaint = () => {
   const [formData, setFormData] = useState({
@@ -35,7 +35,7 @@ const RaisedComplaint = () => {
   const fetchComplaints = async () => {
     try {
       const token = localStorage.getItem('token');
-      const res = await axios.get(`${API_BASE}/complaints`, {
+      const res = await axios.get(`${API_BASE_URL}/complaints`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setComplaints(res.data);
@@ -70,7 +70,7 @@ const RaisedComplaint = () => {
     form.append('category', formData.category);
     if (formData.attachments) form.append('attachment', formData.attachments);
     try {
-      await axios.post(`${API_BASE}/complaints`, form, {
+      await axios.post(`${API_BASE_URL}/complaints`, form, {
         headers: {
           Authorization: `Bearer ${token}`,
           'Content-Type': 'multipart/form-data',
@@ -204,7 +204,7 @@ const RaisedComplaint = () => {
                   <p><strong>Priority:</strong> {complaint.priority}</p>
                   <p><strong>Date:</strong> {complaint.date}</p>
                   {complaint.attachment && (
-                    <p><strong>Attachment:</strong> <a href={`${API_BASE}/uploads/${complaint.attachment}`} target="_blank" rel="noopener noreferrer">View</a></p>
+                    <p><strong>Attachment:</strong> <a href={`${API_BASE_URL}/uploads/${complaint.attachment}`} target="_blank" rel="noopener noreferrer">View</a></p>
                   )}
                   {complaint.response && (
                     <div className="admin-response">

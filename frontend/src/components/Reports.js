@@ -26,7 +26,7 @@ ChartJS.register(
     Legend
 );
 
-const API_BASE = 'http://localhost:5000';
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
 
 const Reports = () => {
     const [selectedReport, setSelectedReport] = useState('attendance');
@@ -49,7 +49,7 @@ const Reports = () => {
         const fetchEmployees = async () => {
             try {
                 const token = localStorage.getItem('token');
-                const res = await axios.get(`${API_BASE}/employees`, {
+                const res = await axios.get(`${API_BASE_URL}/employees`, {
                     headers: { Authorization: `Bearer ${token}` }
                 });
                 setEmployees([{ id: 'all', name: 'All Employees', employeeId: 'all', department: 'all' },
@@ -181,7 +181,7 @@ const Reports = () => {
                 endDate: dateRange.endDate,
                 employeeId: selectedEmployee !== 'all' ? selectedEmployee : undefined
             };
-            const res = await axios.get(`${API_BASE}/attendance/report`, {
+            const res = await axios.get(`${API_BASE_URL}/attendance/report`, {
                 headers: { Authorization: `Bearer ${token}` },
                 params
             });
@@ -204,7 +204,7 @@ const Reports = () => {
                 endDate: dateRange.endDate,
                 employeeId: selectedEmployee !== 'all' ? selectedEmployee : undefined
             };
-            const res = await axios.get(`${API_BASE}/performance-metrics/report`, {
+            const res = await axios.get(`${API_BASE_URL}/performance-metrics/report`, {
                 headers: { Authorization: `Bearer ${token}` },
                 params
             });
@@ -226,7 +226,7 @@ const Reports = () => {
                 endDate: dateRange.endDate,
                 employeeId: selectedEmployee !== 'all' ? selectedEmployee : undefined
             };
-            const res = await axios.get(`${API_BASE}/leaves/report`, {
+            const res = await axios.get(`${API_BASE_URL}/leaves/report`, {
                 headers: { Authorization: `Bearer ${token}` },
                 params
             });
@@ -248,7 +248,7 @@ const Reports = () => {
                 endDate: dateRange.endDate,
                 employeeId: selectedEmployee !== 'all' ? selectedEmployee : undefined
             };
-            const res = await axios.get(`${API_BASE}/tasks/report`, {
+            const res = await axios.get(`${API_BASE_URL}/tasks/report`, {
                 headers: { Authorization: `Bearer ${token}` },
                 params
             });

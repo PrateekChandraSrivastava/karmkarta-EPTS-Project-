@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useNavigate, Link } from 'react-router-dom';
 import '../Style/Register.css';
 
+const API_BASE_URL = process.env.REACT_APP_API_BASE_URL;
+
 const Register = () => {
     const [formData, setFormData] = useState({
         username: '',
@@ -57,7 +59,7 @@ const Register = () => {
                 payload.manager_id = formData.managerId;
             }
 
-            const response = await axios.post('http://localhost:5000/auth/register', payload);
+            const response = await axios.post(`${API_BASE_URL}/auth/register`, payload);
             console.log('Registration successful:', response.data);
             navigate('/login');
         } catch (err) {
